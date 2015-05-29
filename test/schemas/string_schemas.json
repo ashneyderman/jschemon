@@ -1,0 +1,38 @@
+{
+  "enumerated strings": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "string",
+    "enum": [ "location", "department", "role", "user", "contact" ]
+   },
+  "string with maxLength": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "string",
+    "maxLength": 10
+   },
+  "patterned date-time": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "string",
+    "pattern": "^[0-9]{4}-[01][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-6][0-9].[0-9]{3}Z$"
+   },
+  "strings with minLength": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "minLength",
+    "type": "string",
+    "minLength": 2
+   },
+  "minAndMaxLength": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "minLength, maxLength",
+    "type": "string",
+    "minLength": 2,
+    "maxLength": 10
+   },
+  "composite": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "pattern, minLength, maxLength",
+    "type": "string",
+    "pattern": "a.[bc]",
+    "minLength": 3,
+    "maxLength": 10
+   }
+}
