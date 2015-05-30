@@ -51,7 +51,7 @@ defmodule JSONValidator do
   end
 
   defp object(schema) do 
-    validators = allOf(schema) ++ oneOf(schema) ++ properties(schema)
+    validators = [allOf(schema), oneOf(schema), properties(schema)]
     fn(value) when is_map(value) ->
         (for validator <- validators, do: validator.(value))
           |> Enum.all?(&(&1))
@@ -82,7 +82,9 @@ defmodule JSONValidator do
       nil -> fn(_) -> true end
       props when is_map(props) ->
         required = schema["required"]
-        validators = props |> Enum.map(fn({k,v}) -> {k, build(v)} end)
+        validators = props 
+                      |> Enum.map(fn({k,v}) -> {k, build(v)} end) 
+                      |> Enum.into(%{})
         fn(value) when is_map(value) ->
             result = value 
                   |> Enum.map(fn({k,v}) -> 
