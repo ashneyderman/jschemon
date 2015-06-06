@@ -6,5 +6,40 @@
   "numbers": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "number"
+  },
+  "numbers with maximum (23.0)": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "maximum": 23.0
+  },
+  "numbers with exclusive maximum (23.0)": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "maximum": 23.0,
+    "exclusiveMaximum": true
+  },
+  "numbers with minimum (23.0)": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "minimum": 23.0
+  },
+  "numbers with exclusive minimum (23.0)": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "minimum": 23.0,
+    "exclusiveMinimum": true
+  },
+  "numbers multiplesOf (5)": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "multipleOf": 5
+  },
+  "numbers composite min 5 and max 23": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "number",
+    "minimum": 5.0,
+    "exclusiveMinimum": true,
+    "maximum": 23.0,
+    "exclusiveMaximum": true
   }
 }

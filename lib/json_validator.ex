@@ -1,6 +1,8 @@
 defmodule JSONValidator do
   require Logger
 
+  @mult_epsilon 0.0000001
+
   def create(schema_json) when is_map(schema_json) do
     schema_json |> build
   end
@@ -126,15 +128,18 @@ defmodule JSONValidator do
   end
 
   defp validate_number(n, schema) do
-    multipleOf = schema["multipleOf"]
-    maximum    = schema["maximum"]
-    exclMax    = schema["exclusiveMaximum"]
-    minimum    = schema["minimum"]
-    exclMin    = schema["exclusiveMinimum"]
+    mOf     = schema["multipleOf"]
+    maximum = schema["maximum"]
+    exclMax = schema["exclusiveMaximum"]
+    minimum = schema["minimum"]
+    exclMin = schema["exclusiveMinimum"]
 
-    multCheck = if (multipleOf != nil),
-                  do: (rem(n, multipleOf) == 0),
-                else: true
+    multCheck = if (mOf != nil) do
+                  x = n/mOf
+                  (n == 0 || abs(n) >= mOf) && (@mult_epsilon > (abs(round(x) - x)))
+                else
+                  true
+                end
 
     maxCheck  = if (maximum != nil),
                   do: l(n, maximum, exclMax),
