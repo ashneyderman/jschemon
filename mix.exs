@@ -4,7 +4,7 @@ defmodule Jschemon.Mixfile do
   def project do
     [app: :jschemon,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -16,7 +16,7 @@ defmodule Jschemon.Mixfile do
 
   defp deps do
     [
-      { :exjsx    , "3.1.0" }
+      { :poison    , "~> 2.1" }
     ]
   end
 end

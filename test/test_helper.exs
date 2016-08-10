@@ -4,7 +4,7 @@ defmodule JSchemonHelper do
 
   def schemas_json(filename) do
     json_file = Path.absname(filename, __DIR__)
-    json_file |> File.read! |> JSX.decode!
+    json_file |> File.read! |> Poison.decode!
   end
 
   def validate(name, opts) do
